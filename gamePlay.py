@@ -7,19 +7,19 @@ def start_game() -> None:
     print("===================================================================")
     print("            THE EPIC TROLLVENTURE - VOLUME 1                       ")
     print("===================================================================")
-    print("\nYou wake up on a bench in uptown, as the sun hits your face.")
-    print("All you can remeber is studying for 160 hours straight for BUS")
+    print("\nYou wake up on a bench in Uptown as the sun hits your face.")
+    print("All you can remember is studying for 160 hours straight for BUS")
     print("302: Coloring Between the Lines.")
-    print("\nYou stand up and look at your wrist, your watch reads 7:30.")
-    print("Your head is pounding and theres a fuzzy feeling when you try to")
-    print("remeber last night.")
+    print("\nYou stand up and look at your wrist. Your watch reads 7:30.")
+    print("Your head is pounding and there's a fuzzy feeling when you try to")
+    print("remember last night.")
     print("\nAll you can remember is a shadowy figure in a trench coat who")
-    print(" called themselves The Hat Man and a bad feeling almost like your")
+    print("called themselves The Hat Man and a bad feeling, almost like you're")
     print("forgetting something important. Yet as you stand there you start")
     print("to feel a brisk morning breeze hit your lower half... almost like")
-    print("you are pantless. But of course due to the Miami University Code")
-    print("of Conduct, we will leave your leg coverage status ambigous. You ")
-    print("have also realized you're missing your left shoe and your diginity")
+    print("you are pantless. But of course due to the Miami University's Code")
+    print("of Conduct, we will leave your leg coverage status ambiguous. You ")
+    print("have also realized you're missing your left shoe and your diginity.")
     print("\n===================================================================\n")
 
 
@@ -58,14 +58,14 @@ def crawford() -> None:
     print("\nThe door opens, and a troll that looks a lot like President Crawford ")
     print("steps out.")
 
-    if (not player.hasPants()):
-        print('\nThe troll stares at you in horror. "Where are your clothes from ')
-        print('yesterday?! This does not align with Miami\'s Values!"" He slams the ')
-        print('door in your face.')
-        print("\nYou look down and remember you still don't have all your clothes on.")
-        print("Maybe you can find them somewhere else...")
-        print("\n===================================================================\n")
-        return
+    # if (not checkDressCode()):
+    #     print('\nThe troll stares at you in horror. "Where are your clothes from ')
+    #     print('yesterday?! This does not align with Miami\'s Values!"" He slams the ')
+    #     print('door in your face.')
+    #     print("\nYou look down and remember you still don't have all your clothes on.")
+    #     print("Maybe you can find them somewhere else...")
+    #     print("\n===================================================================\n")
+    #     return
 
     print('\nYou follow the troll inside, anxious to get whatever your last item is.')
     print('Your pants, your shoe... what else is left?')
