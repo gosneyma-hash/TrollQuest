@@ -1,12 +1,8 @@
 from player import Player
 from ferrenberg import ferrenberg_room
 from intro import start_game
-# Can be put inside another method
 
-
-def help() -> None:
-    print("Enter one of the listed numbers to choose your option.")
-    print("For more guidance, view Miami University's Student Code of Conduct at the following link: https://miamioh.edu/policy-library/students/student-code-of-conduct/")
+player = Player()
 
 
 def chekhovsFlag() -> None:
@@ -39,28 +35,30 @@ def crawford() -> None:
         print("\n===================================================================\n")
         return
 
-    print(
-        "\nRealizing its the same shape as the Chekhov\'s [CENSORED BY MIAMI'S ")
+    print("\nRealizing it's the same shape as the Chekhov's [CENSORED BY MIAMI'S ")
     print("VALUES], you insert it into the hole.")
     print("\nThe door opens, and a troll that looks a lot like President Crawford ")
-    print("steps out.")
+    print("steps out. At this point, you aren't surprised.")
 
-    # if (not checkDressCode()):
-    #     print('\nThe troll stares at you in horror. "Where are your clothes from ')
-    #     print('yesterday?! This does not align with Miami\'s Values!"" He slams the ')
-    #     print('door in your face.')
-    #     print("\nYou look down and remember you still don't have all your clothes on.")
-    #     print("Maybe you can find them somewhere else...")
-    #     print("\n===================================================================\n")
-    #     return
+    if (not (player.hasPants() and player.hasShoe())):
+        print('\nThe troll stares at you in horror. "Where are your clothes from ')
+        print('yesterday?! This does not align with Miami\'s Values!"" He slams the ')
+        print('door in your face.')
+        print("\nYou look down and remember you still don't have all your clothes on.")
+        print("Maybe you can find them somewhere else...")
+        print("\n===================================================================\n")
+        return
 
     print('\nYou follow the troll inside, anxious to get whatever your last item is.')
     print('Your pants, your shoe... what else is left?')
     print('\n"You\'ve done well," the troll says. "But here is your final riddle to ')
-    print('put all you have learned to the test..."')
+    print('prove your understanding of Miami\'s Values to the test..."')
 
     incorrect = True
+    max_attempts = 2
+    curr_attempts = 0
     while (incorrect):
+        print('\n"Remember, you only have %d attempts left!"' % (3 - curr_attempts))
         print('\n"In Miami University\'s Code of Student Conduct 2026-2027, what object ')
         print('to tell the time is depicted on the cover?"')
         print("\nAnswer (or type 'HELP' for guidance): ", end='')
@@ -72,22 +70,20 @@ def crawford() -> None:
             print('University\'s Values!"')
             print('\n"For your hard work, here is your final item."')
             player.setExam(True)
-            print(
-                "The troll hands you pieces of paper stapled together. The top reads 'BUS ")
+            print("The troll hands you pieces of paper stapled together. The top reads 'BUS ")
             print("302: Coloring Between the Lines. Take Home Exam'.")
         elif (answer == 'help'):
             print("\nYou gasp. The help option wasn't useless after all!")
             help()
         else:
             print('"Incorrect!"')
-            # check timer
-            # if (timer exceeds time):
-            #     print('"I am sorry, but it looks like you have run out of time..."')
-            #     hatMan()
-            #     return
-            # else:
-            #     print('"I will give you another chance. Use it wisely."')
-            #     add to timer
+            if (curr_attempts == max_attempts):
+                print('\n"I\'m sorry, but it looks like you have run out of time..."')
+                # hatMan()
+                return
+            else:
+                print('\n"I will give you another chance. Use it wisely."')
+                curr_attempts += 1
     print("\n===================================================================\n")
 
 
