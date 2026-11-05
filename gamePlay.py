@@ -1,6 +1,7 @@
 from player import Player
 from ferrenberg import ferrenberg_room
 from intro import start_game
+from gameTime import endgame
 
 player = Player()
 
@@ -18,7 +19,7 @@ def chekhovsFlag() -> None:
         print("\n===================================================================\n")
         return
 
-    print("You touch the tile. It moves, revealing a dent in the ground.")
+    print("While walking, you see something shiny next to the sidewalk.")
     print("It's a Chekhov's [CENSORED BY MIAMI'S VALUES]!")
     print("More specifically, a flag [CENSORED BY MIAMI'S VALUES]!")
     print("Deciding you might need it, you take it with you and leave.")
@@ -79,6 +80,7 @@ def crawford() -> None:
             print("[Item Obtained] President Crawford hands you an exam!")
             print("You read the title at the top of it. 'BUS 302: Coloring")
             print("Between the Lines. Take Home Exam'.")
+            print("President Crawford: Love and Honor.")
         elif (answer == 'help'):
             print("\nYou gasp. The help option isn't useless!")
             help()
@@ -87,7 +89,8 @@ def crawford() -> None:
             print("\nPresident Crawford: WRONG! You do not understand Miami's Values!")
             if (curr_attempts == max_attempts):
                 print("President Crawford: You have run out of time...")
-                # hatMan()
+                print("\n===================================================================\n")
+                endgame()
                 return
             else:
                 print("President Crawford: I will give you another chance. Use it wisely.")
@@ -102,8 +105,12 @@ def help() -> None:
 
 
 def main():
-    start_game(Player)
-    ferrenberg_room(Player)
+    start_game(player)
+    ferrenberg_room(player)
+    print("===================================================================\n") # To delete
+    chekhovsFlag()
+    player.setShoe(True) # To delete
+    crawford()
 
 
 if __name__ == "__main__":
