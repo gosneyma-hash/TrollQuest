@@ -4,14 +4,14 @@
 def completeAction(current_time) -> int:
     current_time -= 50
 
-    if current_time =< 0: 
+    if current_time <= 0: 
         endgame()
 
-    if current_time = 850:
+    if current_time == 850:
         firstSighting()
     return current_time
 
-def checkTime(int current_time) -> int:
+def checkTime(current_time: int) -> int:
     print(current_time)
     return current_time
 
