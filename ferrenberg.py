@@ -1,4 +1,25 @@
+import random
 from player import Player
+from gameTime import endgame, check_time
+
+PG_RIDDLES = [
+    {
+        "question": "You throw away my outside, eat my inside, then throw away the inside. What am I?",
+        "answer": "corn"
+    },
+    {
+        "question": "What gets wetter the more it dries?",
+        "answer": "towel"
+    },
+    {
+        "question": "What do you call a fake noodle?",
+        "answer": "impasta"
+    },
+    {
+        "question": "What has hands and a face, but can not hold anything or smile?",
+        "answer": "clock"
+    }
+]
 
 
 def help_command() -> None:
@@ -21,18 +42,18 @@ def ferrenberg_room(player: Player) -> None:
     print("Dr. Ferrenberg: You know I have something that might just help you with your problem.")
     print("Dr. Ferrenberg: These magical pants!")
     print("You realize this must be a fever dream, but after pinching yourself you snap back to reality.")
-    print("Indeed this respectablly professor at the esteem Miami Oxford University has indeed turned to a troll and"
+    print("Indeed this respectable professor at the esteem Miami Oxford University has indeed turned to a troll and"
           "have stollen or found your pants.")
     print("Dr. Ferrenberg: Now for me to help you, you must answer my riddle!")
     print("Dr. Ferrenberg: How do you make a plumber cry?")
 
-    first_joke_attempts = 0
-    max_first_attempts = 1
     attempts = 0
     max_attempts = 3
+    selected_riddle = random.choice(PG_RIDDLES)
 
-    while first_joke_attempts < max_first_attempts:
+    while attempts < 1:
         answer = input("Your answer: ").strip().lower()
+        check_time()
 
         if answer == "help":
             help_command()
@@ -41,38 +62,41 @@ def ferrenberg_room(player: Player) -> None:
         if "kill his family" in answer:
             print("\nDr. Ferrenberg slaps his knee and laughs out loud!")
             print("Dr. Ferrenberg: Correct! Now here is your reward.")
-
             player.setPants(True)
             print("\n[Item Obtained] Dr. Ferrenberg hands over your pants!")
-            print("Dr. Ferrenberg whispers: If you're still looking for something, you should check the alley in Uptown.'\n")
+            print("Dr. Ferrenberg whispers: 'If you're still looking for something, you should check the alley in Uptown.'\n")
             return
         else:
-            first_joke_attempts += 1
+            attempts += 1
             remaining = max_attempts - attempts
-            if remaining > 0:
-                print(
-                    f"Dr. Ferrenberg groans: 'Wrong! That doesn't makes any sense!' (Warning: You feel a cold shadow creeping up... {remaining} tries left)\n")
-                print(
-                    "Dr. Ferrenberg: Lets try something else CENSORED BY MIAMI UNIVERSITY?")
-                print("Dr. Ferrenberg: Well maybe something a little more PG, you throw away my outside, eat my inside, then throw away the inside. What am I?")
+            print(
+                f"\nDr. Ferrenberg groans: 'Wrong! That doesn't make any sense!' (Warning: You feel a cold shadow creeping up... {remaining} tries left)")
+            print(
+                "Dr. Ferrenberg: Let's try something else [CENSORED BY MIAMI UNIVERSITY]?")
+            print(
+                f"Dr. Ferrenberg: Well maybe something a little more PG: {selected_riddle['question']} \n")
+
     while attempts < max_attempts:
         answer = input("Your answer: ").strip().lower()
-
+        check_time()
         if answer == "help":
             help_command()
             continue
 
-        if "corn" in answer:
+        if selected_riddle["answer"] in answer:
             print("\nDr. Ferrenberg slaps his knee and laughs out loud!")
             print("Dr. Ferrenberg: Correct! Now here is your reward.")
-
             player.setPants(True)
             print("\n[Item Obtained] Dr. Ferrenberg hands over your pants!")
-            print("Dr. Ferrenberg whispers: If you're still looking for something, you should check the alley in Uptown.'\n")
+            print("Dr. Ferrenberg whispers: 'If you're still looking for something, you should check the alley in Uptown.'\n")
             return
         else:
             attempts += 1
             remaining = max_attempts - attempts
             if remaining > 0:
                 print(
-                    f"Dr. Ferrenberg groans: 'Wrong! That doesn't makes any sense!' (Warning: You feel a cold shadow creeping up... {remaining} tries left)\n")
+                    f"\nDr. Ferrenberg groans: 'Wrong! That doesn't make any sense!' (Warning: You feel a cold shadow creeping up... {remaining} tries left)\n")
+
+    print("\nDr. Ferrenberg: You have failed my riddles... and now he is here.")
+    print("===================================================================\n")
+    endgame()

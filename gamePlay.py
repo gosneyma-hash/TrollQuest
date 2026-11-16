@@ -1,7 +1,7 @@
 from player import Player
 from ferrenberg import ferrenberg_room
 from intro import start_game
-from gameTime import endgame
+from gameTime import endgame, check_time
 
 player = Player()
 
@@ -38,7 +38,8 @@ def crawford() -> None:
         print("\n===================================================================\n")
         return
 
-    print("Realizing it's the same shape as the Chekhov's [CENSORED BY MIAMI'S ")
+    print(
+        "Realizing it's the same shape as the Chekhov's [CENSORED BY MIAMI'S ")
     print("VALUES], you insert it into the hole.")
     print("The door opens, and a troll that looks a lot like President Crawford ")
     print("steps out. At this point, you aren't surprised.")
@@ -67,13 +68,16 @@ def crawford() -> None:
             print("You only have %d attempts left!" % (3 - curr_attempts))
         else:
             print("You have 3 attempts.")
-        print("\nPresident Crawford: In Miami University's Code of Student Conduct 2026-2027,")
+        print(
+            "\nPresident Crawford: In Miami University's Code of Student Conduct 2026-2027,")
         print("what object to tell the time is depicted on the cover?")
         print("Your answer (or type 'HELP' for guidance): ", end='')
         answer = input().lower()
+        check_time()
         if (answer == 'sundial' or answer == 'sun dial'):
             incorrect = False
-            print("\nPresident Crawford: Well done. You've successfully proven your knowledge of")
+            print(
+                "\nPresident Crawford: Well done. You've successfully proven your knowledge of")
             print("Miami's Values!")
             print("President Crawford: For your hard work, here is your final item.")
             player.setExam(True)
@@ -89,11 +93,13 @@ def crawford() -> None:
             print("\nPresident Crawford: WRONG! You do not understand Miami's Values!")
             if (curr_attempts == max_attempts):
                 print("President Crawford: You have run out of time...")
-                print("\n===================================================================\n")
+                print(
+                    "\n===================================================================\n")
                 endgame()
                 return
             else:
-                print("President Crawford: I will give you another chance. Use it wisely.")
+                print(
+                    "President Crawford: I will give you another chance. Use it wisely.")
                 curr_attempts += 1
     print("\n===================================================================\n")
 
@@ -106,10 +112,14 @@ def help() -> None:
 
 def main():
     start_game(player)
+    check_time()
     ferrenberg_room(player)
-    print("===================================================================\n") # To delete
+    check_time()
+    # To delete
+    print("===================================================================\n")
     chekhovsFlag()
-    player.setShoe(True) # To delete
+    player.setShoe(True)  # To delete
+    check_time()
     crawford()
 
 
