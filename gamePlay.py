@@ -138,6 +138,8 @@ def main():
         if (keepPlaying):
             input("[Press enter to continue] ")
             print('')
+        else:
+            input("[Press enter to exit game]")
 
 
 if __name__ == "__main__":
