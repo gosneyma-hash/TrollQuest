@@ -85,7 +85,7 @@ def crawford() -> None:
             if (curr_attempts == max_attempts):
                 print("President Crawford: You have run out of time...")
                 print("\n===================================================================\n")
-                input("[Press enter to die]")
+                input("[Press enter]")
                 print('')
                 endgame()
                 return
