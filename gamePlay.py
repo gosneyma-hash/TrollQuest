@@ -2,6 +2,7 @@ from player import Player
 from ferrenberg import ferrenberg_room
 from intro import start_game
 from gameTime import endgame, check_time
+from Jaimison import jaimison_room
 
 player = Player()
 
