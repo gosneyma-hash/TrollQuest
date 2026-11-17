@@ -41,7 +41,7 @@ def crawford() -> None:
     print('')
 
     if (not (player.hasPants() and player.hasShoe())):
-        print("\nThe troll stares at you in horror.")
+        print("The troll stares at you in horror.")
         print("President Crawford: Where are your clothes from yesterday?! This does not ")
         print("align with Miami's Values!")
         print("He slams the door in your face.")
@@ -104,37 +104,24 @@ def main():
     keepPlaying = True
     while (keepPlaying):
         print("Where to?")
-        if (not player.hasPants() or not player.hasShoe()):
-            print("[1] The Farmer School of Business")
-            print("[2] A dark-looking alley")
-            print("[3] The ground")
-            answer = input("Choice: ")
-            if (answer == "1"):
-                ferrenberg_room(player)
-            elif (answer == "2"):
-                jaimison_room(player)
-            elif (answer == "3"):
-                chekhovsFlag()
-            else:
-                print("\nInvalid choice.")
+        print("[1] The Farmer School of Business")
+        print("[2] A dark-looking alley")
+        print("[3] The ground")
+        print("[4] A house")
+        answer = input("Choice: ")
+        if (answer == "1"):
+            ferrenberg_room(player)
+        elif (answer == "2"):
+            jaimison_room(player)
+        elif (answer == "3"):
+            chekhovsFlag()
+        elif (answer == "4"):
+            crawford()
+            if (player.hasExam()):
+                keepPlaying = False
         else:
-            print("[1] The Farmer School of Business")
-            print("[2] A dark-looking alley")
-            print("[3] The ground")
-            print("[4] A house")
-            answer = input("Choice: ")
-            if (answer == "1"):
-                ferrenberg_room(player)
-            elif (answer == "2"):
-                jaimison_room(player)
-            elif (answer == "3"):
-                chekhovsFlag()
-            elif (answer == "4"):
-                crawford()
-                if (player.hasExam()):
-                    keepPlaying = False
-            else:
-                print("\nInvalid choice.")
+            print("\nInvalid choice.")
+
         if (keepPlaying):
             input("[Press enter to continue] ")
             print('')
