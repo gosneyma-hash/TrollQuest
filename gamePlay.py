@@ -2,6 +2,7 @@ from player import Player
 from ferrenberg import ferrenberg_room
 from intro import start_game
 from gameTime import endgame, check_time
+from Jaimison import jaimison_room
 
 
 player = Player()
@@ -116,6 +117,7 @@ def main():
     check_time()
     ferrenberg_room(player)
     check_time()
+     jaimison_room(player)
     # To delete
     print("===================================================================\n")
     chekhovsFlag()
