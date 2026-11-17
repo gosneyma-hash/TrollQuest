@@ -9,28 +9,22 @@ player = Player()
 
 
 def chekhovsFlag() -> None:
+    print("\n===================================================================\n")
     if (player.hasFlag()):
-        print("You look around. There's nothing new in here.")
-        print("\n===================================================================\n")
-        return
-    print("As you look around, you see a tile in the ground that's sticking out. Odd...")
-
-    if (not player.hasPants()):
-        print("You see everyone staring at you and decide to leave.")
-        print("You need to focus on finding your pants.")
+        print("You look down at the ground. You see dirt.")
         print("\n===================================================================\n")
         return
 
-    print("While walking, you see something shiny next to the sidewalk.")
+    print("You look down at the ground.")
     print("It's a Chekhov's [CENSORED BY MIAMI'S VALUES]!")
-    print("More specifically, a flag [CENSORED BY MIAMI'S VALUES]!")
-    print("Deciding you might need it, you take it with you and leave.")
+    print("Deciding you might need it, you take it.")
     print("[Item Obtained] You steal a Chekhov's [CENSORED BY MIAMI'S VALUES]!")
     player.setFlag(True)
     print("\n===================================================================\n")
 
 
 def crawford() -> None:
+    print("\n===================================================================\n")
     print("You approach the house. As you do, you see there's a hole in the ")
     print("wall next to the door. It looks like a key slot.")
 
@@ -40,11 +34,11 @@ def crawford() -> None:
         print("\n===================================================================\n")
         return
 
-    print(
-        "Realizing it's the same shape as the Chekhov's [CENSORED BY MIAMI'S ")
+    print("Realizing it's the same shape as the Chekhov's [CENSORED BY MIAMI'S ")
     print("VALUES], you insert it into the hole.")
-    print("The door opens, and a troll that looks a lot like President Crawford ")
-    print("steps out. At this point, you aren't surprised.")
+    print("The door opens, and a troll that looks like President Crawford steps out.")
+    input("\n[Press enter to continue] ")
+    print('')
 
     if (not (player.hasPants() and player.hasShoe())):
         print("\nThe troll stares at you in horror.")
@@ -58,28 +52,22 @@ def crawford() -> None:
 
     print("President Crawford: I see you've upheld Miami's dress code. Come in.")
     print('You follow him inside, anxious to get whatever your last item is.')
-    print('Your pants, your shoe... what else is left?')
     print("President Crawford: You've done well. But here is your final riddle ")
     print("to put your understanding of Miami's Values to the test...")
+    print("You only have 2 attempts.")
 
     incorrect = True
     max_attempts = 2
     curr_attempts = 0
     while (incorrect):
-        if (curr_attempts > 0):
-            print("You only have %d attempts left!" % (3 - curr_attempts))
-        else:
-            print("You have 3 attempts.")
-        print(
-            "\nPresident Crawford: In Miami University's Code of Student Conduct 2026-2027,")
+        print("\nPresident Crawford: In Miami University's Code of Student Conduct 2026-2027,")
         print("what object to tell the time is depicted on the cover?")
-        print("Your answer (or type 'HELP' for guidance): ", end='')
+        print("Your answer (or type 'HELP' for assistance): ", end='')
         answer = input().lower()
         check_time()
         if (answer == 'sundial' or answer == 'sun dial'):
             incorrect = False
-            print(
-                "\nPresident Crawford: Well done. You've successfully proven your knowledge of")
+            print("\nPresident Crawford: Well done. You've successfully proven your knowledge of")
             print("Miami's Values!")
             print("President Crawford: For your hard work, here is your final item.")
             player.setExam(True)
@@ -88,42 +76,68 @@ def crawford() -> None:
             print("Between the Lines. Take Home Exam'.")
             print("President Crawford: Love and Honor.")
         elif (answer == 'help'):
-            print("\nYou gasp. The help option isn't useless!")
-            help()
-            print("")
+            print("\nFor more guidance, view Miami University's Student Code of Conduct ")
+            print("at the following link:")
+            print("https://docs.google.com/document/d/e/2PACX-1vRMucz0S7mWTht0NnItC6y9Vx289nsgQWPpNh5dICrPtNttSJ8hVR-GpD_cQbCvh6q4fqQ4xiROfAWh/pub?urp=gmail_link")
         else:
+            curr_attempts += 1
             print("\nPresident Crawford: WRONG! You do not understand Miami's Values!")
             if (curr_attempts == max_attempts):
                 print("President Crawford: You have run out of time...")
-                print(
-                    "\n===================================================================\n")
+                print("\n===================================================================\n")
+                input("[Press enter to die]")
+                print('')
                 endgame()
                 return
             else:
-                print(
-                    "President Crawford: I will give you another chance. Use it wisely.")
-                curr_attempts += 1
-    print("\n===================================================================\n")
-
-
-def help() -> None:
-    print("For more guidance, view Miami University's Student Code of Conduct ")
-    print("at the following link:")
-    print("https://docs.google.com/document/d/e/2PACX-1vRMucz0S7mWTht0NnItC6y9Vx289nsgQWPpNh5dICrPtNttSJ8hVR-GpD_cQbCvh6q4fqQ4xiROfAWh/pub?urp=gmail_link")
+                print("President Crawford: I will give you only one other chance!")
+    print("\n===================================================================")
 
 
 def main():
     start_game(player)
     check_time()
-    ferrenberg_room(player)
-    check_time()
-     jaimison_room(player)
-    # To delete
-    print("===================================================================\n")
-    chekhovsFlag()
-    player.setShoe(True)  # To delete
-    check_time()
-    crawford()
+    input("[Press enter to continue] ")
+    print('')
+    print("Glancing at your watch, you decide to better get moving.")
+    print('')
+    keepPlaying = True
+    while (keepPlaying):
+        print("Where to?")
+        if (not player.hasPants() or not player.hasShoe()):
+            print("[1] The Farmer School of Business")
+            print("[2] A dark-looking alley")
+            print("[3] The ground")
+            answer = input("Choice: ")
+            if (answer == "1"):
+                ferrenberg_room(player)
+            elif (answer == "2"):
+                jaimison_room(player)
+            elif (answer == "3"):
+                chekhovsFlag()
+            else:
+                print("\nInvalid choice.")
+        else:
+            print("[1] The Farmer School of Business")
+            print("[2] A dark-looking alley")
+            print("[3] The ground")
+            print("[4] A house")
+            answer = input("Choice: ")
+            if (answer == "1"):
+                ferrenberg_room(player)
+            elif (answer == "2"):
+                jaimison_room(player)
+            elif (answer == "3"):
+                chekhovsFlag()
+            elif (answer == "4"):
+                crawford()
+                if (player.hasExam()):
+                    keepPlaying = False
+            else:
+                print("\nInvalid choice.")
+        if (keepPlaying):
+            input("[Press enter to continue] ")
+            print('')
 
 
 if __name__ == "__main__":
