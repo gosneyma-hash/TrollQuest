@@ -46,7 +46,8 @@ def endgame() -> None:
     print("Three trollish faces stacked a top each other.\n")
     print("You know they've come for you as they reach out there hands and. . .\n")
     print("THIS LINE WAS REDACTED BY MIAMI UNIVERSITIES CODE OF CONDUCT.\n")
-    print("the end")
+    print("as you think it is the end they separate THIS LINE WAS REDACTED BY MIAMI UNIVERSITIES CODE OF CONDUCT.")
+    print(".....THE END")
     sys.exit()
 
 
