@@ -1,6 +1,6 @@
 import random
 from player import Player
-from gameTime import endgame, check_time
+from gameTime import endgame, check_time, help_command
 
 PG_RIDDLES = [
     {
@@ -22,14 +22,14 @@ PG_RIDDLES = [
 ]
 
 
-def help_command() -> None:
-    print("\n--- HELP MENU ---")
-    print("Enter one of the listed numbers to choose your option.")
-    print("For more guidance, view Miami University's Student Code of Conduct at:")
-    print("https://miamioh.edu/policy-library/students/student-code-of-conduct/\n")
-
-
 def ferrenberg_room(player: Player) -> None:
+    if player.hasPants():
+        print("Dr. Ferrenberg: You already answered my riddle and got your magical pants!")
+        print(
+            "Dr. Ferrenberg: If you're that bored maybe we can explore the wonders of [CENSORED BY MIAMI UNIVERSITY]!")
+        print("Before he continues you you choose to runaway in fear of those eyes.")
+        return
+
     print("As you stumble around town you realize you need to find your pants"
           " before you can continue any further.")
     print("But for the life of you, you can't think of where you put them.")
@@ -37,13 +37,13 @@ def ferrenberg_room(player: Player) -> None:
           "a whisper in the bushes talking to other sleep deprived students as they pass by.")
     print("As you get closer before you can hear anything a monster, almost troll like"
           "jumps out at you!")
-    print("Dr. Ferrenberg: Halt! Oh, it's just you the animal from last night. Look at you"
+    print("Dr. Ferrenberg: Halt! Oh, it's just you, the animal from last night. Look at you"
           "walking around like that, you should be ashamed.")
     print("Dr. Ferrenberg: You know I have something that might just help you with your problem.")
     print("Dr. Ferrenberg: These magical pants!")
     print("You realize this must be a fever dream, but after pinching yourself you snap back to reality.")
     print("Indeed this respectable professor at the esteem Miami Oxford University has indeed turned to a troll and"
-          "have stollen or found your pants.")
+          "have stollen your pants.")
     print("Dr. Ferrenberg: Now for me to help you, you must answer my riddle!")
     print("Dr. Ferrenberg: How do you make a plumber cry?")
 
@@ -74,7 +74,7 @@ def ferrenberg_room(player: Player) -> None:
             print(
                 "Dr. Ferrenberg: Let's try something else [CENSORED BY MIAMI UNIVERSITY]?")
             print(
-                f"Dr. Ferrenberg: Well maybe something a little more PG: {selected_riddle['question']} \n")
+                f"Dr. Ferrenberg: Well maybe something a little more PG is okay?: {selected_riddle['question']} \n")
 
     while attempts < max_attempts:
         answer = input("Your answer: ").strip().lower()
@@ -88,7 +88,7 @@ def ferrenberg_room(player: Player) -> None:
             print("Dr. Ferrenberg: Correct! Now here is your reward.")
             player.setPants(True)
             print("\n[Item Obtained] Dr. Ferrenberg hands over your pants!")
-            print("Dr. Ferrenberg whispers: 'If you're still looking for something, you should check the alley in Uptown.'\n")
+            print("Dr. Ferrenberg whispers: 'If you're still looking for something, you should check around where you woke up this morning.'\n")
             return
         else:
             attempts += 1

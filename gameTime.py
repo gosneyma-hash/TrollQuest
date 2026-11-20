@@ -51,7 +51,15 @@ def endgame() -> None:
     sys.exit()
 
 
+def help_command() -> None:
+    print("\n--- HELP MENU ---")
+    print("Enter one of the listed numbers to choose your option.")
+    print("For more guidance, view Miami University's Student Code of Conduct at:")
+    print("https://miamioh.edu/policy-library/students/student-code-of-conduct/\n")
+
 # Kept just incase you still need it but if it's good to delete just go ahead!
+
+
 def completeAction(current_time) -> int:
     current_time -= 50
 
